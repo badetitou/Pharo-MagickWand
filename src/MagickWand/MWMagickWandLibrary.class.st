@@ -11,6 +11,11 @@ MWMagickWandLibrary class >> reset [
 ]
 
 { #category : #'magick wand methods' }
+MWMagickWandLibrary >> clearMagickWand: aMagickWand [
+	^ self ffiCall: 'void ClearMagickWand(void * aMagickWand)'
+]
+
+{ #category : #'magick wand methods' }
 MWMagickWandLibrary >> isMagickWandInstantiated [
 	^ self ffiCall: 'Boolean IsMagickWandInstantiated(void)'
 ]
