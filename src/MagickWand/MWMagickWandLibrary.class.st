@@ -17,7 +17,12 @@ MWMagickWandLibrary >> isMagickWandInstantiated [
 
 { #category : #'magick image' }
 MWMagickWandLibrary >> magick: aMagickWand getImageBlobOfSize: length [
-	^ self ffiCall: 'uchar * MagickGetImagesBlob(void * aMagickWand, size_t * length)'
+	^ self ffiCall: 'String MagickGetImageBlob(void * aMagickWand, size_t * length)'
+]
+
+{ #category : #'magick image' }
+MWMagickWandLibrary >> magick: aMagickWand getImagesBlobOfSize: length [
+	^ self ffiCall: 'String MagickGetImagesBlob(void * aMagickWand, size_t * length)'
 ]
 
 { #category : #'magick image' }
@@ -28,6 +33,26 @@ MWMagickWandLibrary >> magick: aMagickWand readImage: filename [
 { #category : #'magick image' }
 MWMagickWandLibrary >> magick: aMagickWand setImageFormat: format [
 	^ self ffiCall: 'Boolean MagickSetImageFormat(void * aMagickWand, String format)'
+]
+
+{ #category : #'magick image' }
+MWMagickWandLibrary >> magickGetImageFilename: aMagickWand [
+	^ self ffiCall: 'String MagickGetImageFilename(void * aMagickWand)'
+]
+
+{ #category : #'magick image' }
+MWMagickWandLibrary >> magickGetImageFormat: aMagickWand [
+	^ self ffiCall: 'String MagickGetImageFormat(void * aMagickWand)'
+]
+
+{ #category : #'magick image' }
+MWMagickWandLibrary >> magickGetImageHeight: aMagickWand [
+	^ self ffiCall: 'size_t MagickGetImageHeight(void * aMagickWand)'
+]
+
+{ #category : #'magick image' }
+MWMagickWandLibrary >> magickGetImageWidth: aMagickWand [
+	^ self ffiCall: 'size_t MagickGetImageWidth(void * aMagickWand)'
 ]
 
 { #category : #'magick wand methods' }
