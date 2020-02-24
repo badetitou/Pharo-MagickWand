@@ -36,6 +36,11 @@ MWMagickWandLibrary >> magick: aMagickWand setImageFormat: format [
 ]
 
 { #category : #'magick image' }
+MWMagickWandLibrary >> magick: aMagickWand writeImage: filename [
+	^ self ffiCall: 'Boolean MagickWriteImage(void * aMagickWand, String filename)'
+]
+
+{ #category : #'magick image' }
 MWMagickWandLibrary >> magickGetImageFilename: aMagickWand [
 	^ self ffiCall: 'String MagickGetImageFilename(void * aMagickWand)'
 ]
