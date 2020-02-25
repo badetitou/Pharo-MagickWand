@@ -1,7 +1,7 @@
 Class {
 	#name : #MWMagickWandLibrary,
 	#superclass : #FFILibrary,
-	#category : #MagickWand
+	#category : #'MagickWand-Library'
 }
 
 { #category : #initialization }
@@ -12,7 +12,7 @@ MWMagickWandLibrary class >> reset [
 
 { #category : #'magick wand methods' }
 MWMagickWandLibrary >> clearMagickWand: aMagickWand [
-	^ self ffiCall: 'void ClearMagickWand(void * aMagickWand)'
+	^ self ffiCall: 'void ClearMagickWand(MWMagickWand * aMagickWand)'
 ]
 
 { #category : #'magick wand methods' }
@@ -22,57 +22,57 @@ MWMagickWandLibrary >> isMagickWandInstantiated [
 
 { #category : #'magick image' }
 MWMagickWandLibrary >> magick: aMagickWand getImageBlobOfSize: length [
-	^ self ffiCall: 'String MagickGetImageBlob(void * aMagickWand, size_t * length)'
+	^ self ffiCall: 'uchar * MagickGetImageBlob(MWMagickWand * aMagickWand, size_t * length)'
 ]
 
 { #category : #'magick image' }
 MWMagickWandLibrary >> magick: aMagickWand getImagesBlobOfSize: length [
-	^ self ffiCall: 'String MagickGetImagesBlob(void * aMagickWand, size_t * length)'
+	^ self ffiCall: 'String MagickGetImagesBlob(MWMagickWand * aMagickWand, size_t * length)'
 ]
 
 { #category : #'magick image' }
 MWMagickWandLibrary >> magick: aMagickWand readImage: filename [
-	^ self ffiCall: 'Boolean MagickReadImage(void * aMagickWand, String filename)'
+	^ self ffiCall: 'Boolean MagickReadImage(MWMagickWand * aMagickWand, String filename)'
 ]
 
 { #category : #'magick image' }
 MWMagickWandLibrary >> magick: aMagickWand setImageFormat: format [
-	^ self ffiCall: 'Boolean MagickSetImageFormat(void * aMagickWand, String format)'
+	^ self ffiCall: 'Boolean MagickSetImageFormat(MWMagickWand * aMagickWand, String format)'
 ]
 
 { #category : #'magick image' }
 MWMagickWandLibrary >> magick: aMagickWand writeImage: filename [
-	^ self ffiCall: 'Boolean MagickWriteImage(void * aMagickWand, String filename)'
+	^ self ffiCall: 'Boolean MagickWriteImage(MWMagickWand * aMagickWand, String filename)'
 ]
 
 { #category : #'magick image' }
 MWMagickWandLibrary >> magickGetImageFilename: aMagickWand [
-	^ self ffiCall: 'String MagickGetImageFilename(void * aMagickWand)'
+	^ self ffiCall: 'String MagickGetImageFilename(MWMagickWand * aMagickWand)'
 ]
 
 { #category : #'magick image' }
 MWMagickWandLibrary >> magickGetImageFormat: aMagickWand [
-	^ self ffiCall: 'String MagickGetImageFormat(void * aMagickWand)'
+	^ self ffiCall: 'String MagickGetImageFormat(MWMagickWand * aMagickWand)'
 ]
 
 { #category : #'magick image' }
 MWMagickWandLibrary >> magickGetImageHeight: aMagickWand [
-	^ self ffiCall: 'size_t MagickGetImageHeight(void * aMagickWand)'
+	^ self ffiCall: 'size_t MagickGetImageHeight(MWMagickWand * aMagickWand)'
 ]
 
 { #category : #'magick image' }
 MWMagickWandLibrary >> magickGetImageWidth: aMagickWand [
-	^ self ffiCall: 'size_t MagickGetImageWidth(void * aMagickWand)'
+	^ self ffiCall: 'size_t MagickGetImageWidth(MWMagickWand * aMagickWand)'
 ]
 
 { #category : #'magick wand methods' }
 MWMagickWandLibrary >> magickResetIterator: wand [
-	^ self ffiCall: 'void MagickResetIterator(void * wand)'
+	^ self ffiCall: 'void MagickResetIterator(MWMagickWand * wand)'
 ]
 
 { #category : #'magick wand methods' }
 MWMagickWandLibrary >> magickSetFirstIterator: wand [
-	^ self ffiCall: 'void MagickSetFirstIterator(void  *wand)'
+	^ self ffiCall: 'void MagickSetFirstIterator(MWMagickWand * wand)'
 ]
 
 { #category : #'magick wand methods' }
@@ -87,7 +87,7 @@ MWMagickWandLibrary >> magickWandTerminus [
 
 { #category : #'magick wand methods' }
 MWMagickWandLibrary >> newMagickWand [
-	^ self ffiCall: 'void * NewMagickWand()'
+	^ self ffiCall: 'MWMagickWand * NewMagickWand()'
 ]
 
 { #category : #'accessing platform' }
