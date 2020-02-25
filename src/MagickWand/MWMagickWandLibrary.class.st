@@ -60,6 +60,11 @@ MWMagickWandLibrary >> magickGetExceptionType: aMagickWand [
 	^ self ffiCall: 'void * MagickGetExceptionType(MagickWand * aMagickWand)'
 ]
 
+{ #category : #'magick wand methods' }
+MWMagickWandLibrary >> magickGetFormat: aMagickWand [
+	^ self ffiCall: 'char * MagickGetFormat(MWMagickWand * aMagickWand)'
+]
+
 { #category : #'magick image' }
 MWMagickWandLibrary >> magickGetImageFilename: aMagickWand [
 	^ self ffiCall: 'String MagickGetImageFilename(MWMagickWand * aMagickWand)'
