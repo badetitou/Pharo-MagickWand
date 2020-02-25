@@ -20,6 +20,11 @@ MWMagickWandLibrary >> isMagickWandInstantiated [
 	^ self ffiCall: 'Boolean IsMagickWandInstantiated(void)'
 ]
 
+{ #category : #'magick wand methods' }
+MWMagickWandLibrary >> magick: aMagickWand getException: severity [
+	^ self ffiCall: 'char * MagickGetException(MWMagickWand * aMagickWand,void * severity)'
+]
+
 { #category : #'magick image' }
 MWMagickWandLibrary >> magick: aMagickWand getImageBlobOfSize: length [
 	^ self ffiCall: 'uchar * MagickGetImageBlob(MWMagickWand * aMagickWand, size_t * length)'
@@ -43,6 +48,16 @@ MWMagickWandLibrary >> magick: aMagickWand setImageFormat: format [
 { #category : #'magick image' }
 MWMagickWandLibrary >> magick: aMagickWand writeImage: filename [
 	^ self ffiCall: 'Boolean MagickWriteImage(MWMagickWand * aMagickWand, String filename)'
+]
+
+{ #category : #'magick wand methods' }
+MWMagickWandLibrary >> magickClearException: aMagickWand [
+	^ self ffiCall: 'Boolean MagickClearException(MWMagickWand * aMagickWand)'
+]
+
+{ #category : #'magick wand methods' }
+MWMagickWandLibrary >> magickGetExceptionType: aMagickWand [
+	^ self ffiCall: 'void * MagickGetExceptionType(MagickWand * aMagickWand)'
 ]
 
 { #category : #'magick image' }
